@@ -9,5 +9,5 @@ export const setupRestEndpoints = (app: Application) => {
     app.use(express.json())
     app.use(cors())
     app.use("/", router)
-    app.use("/", UserRoute)
+    app.use("/", UserRoute())
 }

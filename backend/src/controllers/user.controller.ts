@@ -29,8 +29,8 @@ const login = async (req: Request, res: Response) => {
   const tokenPayload: TokenPayload = {
     id: _id
   }
-  const token: string = jwt.sing(tokenPayload, JWT_SECRET!!, { expiresIn: EXPIRES!! })
-  return res.status(200).json({ ...user, token })
+  const token: string = jwt.sign(tokenPayload, JWT_SECRET!!, { expiresIn: EXPIRES!! })
+  return res.status(200).json({ user, token })
 }
 
 
