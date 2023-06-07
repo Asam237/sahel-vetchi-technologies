@@ -29,6 +29,12 @@ const userSchema: mongoose.Schema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  organisations: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Organisation"
+    }
+  ]
 });
 
 const UserModel = mongoose.model("User", userSchema);
