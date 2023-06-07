@@ -7,3 +7,8 @@ export type CreateUserInput = {
   userType: string;
   isLocked: boolean;
 };
+
+export type LoginUserInput = {
+  email: string;
+  password: string;
+};
