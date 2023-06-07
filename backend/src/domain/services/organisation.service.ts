@@ -13,7 +13,7 @@ const getOneOrganisationService = async (id: any) => {
     return await OrganisationModel.findOne({ _id: id })
 }
 
-const getAllOrganisationService = async (id: any) => {
+const getAllOrganisationService = async () => {
     return await OrganisationModel.find({})
 }
 
