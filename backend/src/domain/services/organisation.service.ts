@@ -16,5 +16,8 @@ const getOneOrganisationService = async (id: any) => {
 const getAllOrganisationService = async () => {
     return await OrganisationModel.find({})
 }
+const getOrganisationByToken = async (id: any, populate: string) => {
+    return await OrganisationModel.find({ user: id }).populate(populate)
+}
 
-export default { createOrganisationService, deleteOrganisationService, getOneOrganisationService, getAllOrganisationService }
+export default { createOrganisationService, deleteOrganisationService, getOneOrganisationService, getAllOrganisationService, getOrganisationByToken }

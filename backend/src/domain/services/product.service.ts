@@ -15,5 +15,8 @@ const getOneProductService = async (id: any) => {
 const getAllProductService = async () => {
     return await ProductModel.find({})
 }
+const getProductByToken = async (id: any, populate: string) => {
+    return await ProductModel.find({ user: id }).populate(populate)
+}
 
-export default { createProductService, deleteProductService, getOneProductService, getAllProductService }
+export default { createProductService, deleteProductService, getOneProductService, getAllProductService, getProductByToken }

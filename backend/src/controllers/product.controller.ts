@@ -30,4 +30,9 @@ const getAllProductController = async (req: Request, res: Response) => {
     return res.status(200).json({ data: products })
 }
 
-export { createProductController, deleteProductController, getOneProductController, getAllProductController }
+const getProductByTokenController = async (req: Request, res: Response) => {
+    const products = await productService.getProductByToken(req.user.id, "organisation")
+    return res.status(200).json({ data: products })
+}
+
+export { createProductController, deleteProductController, getOneProductController, getAllProductController, getProductByTokenController }

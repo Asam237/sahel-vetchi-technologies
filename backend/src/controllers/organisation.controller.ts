@@ -30,4 +30,9 @@ const getAllOrganisationController = async (req: Request, res: Response) => {
     return res.status(200).json({ data: organisations })
 }
 
-export { createOrganisationController, deleteOrganisationController, getAllOrganisationController, getOneOrganisationController }
+const getAllOrganisationControllerToken = async (req: Request, res: Response) => {
+    const organisations = await organisationService.getOrganisationByToken(req.user.id, "user")
+    return res.status(200).json({ data: organisations })
+}
+
+export { createOrganisationController, deleteOrganisationController, getAllOrganisationController, getOneOrganisationController, getAllOrganisationControllerToken }
