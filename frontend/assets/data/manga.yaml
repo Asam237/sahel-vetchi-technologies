@@ -1,0 +1,25 @@
+items:
+    - title: One Punch Man
+      description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam culpa dolor eaque facilis numquam obcaecati sapiente, sunt totam vitae? Blanditiis eligendi
+      stars: 5
+      tags:
+        - Action
+        - Combat
+    - title: Naruto
+      description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam culpa dolor eaque facilis numquam obcaecati sapiente, sunt totam vitae? Blanditiis eligendi
+      stars: 5
+      tags:
+        - Action
+        - Romance
+    - title: Blue Lock
+      description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam culpa dolor eaque facilis numquam obcaecati sapiente, sunt totam vitae? Blanditiis eligendi
+      stars: 5
+      tags:
+        - Action
+        - Football
+    - title: MHA
+      description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam culpa dolor eaque facilis numquam obcaecati sapiente, sunt totam vitae? Blanditiis eligendi
+      stars: 5
+      tags:
+        - Action
+        - Combat
