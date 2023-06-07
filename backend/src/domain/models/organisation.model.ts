@@ -36,7 +36,11 @@ const organisationSchema: mongoose.Schema = new mongoose.Schema({
             ref: "Product"
 
         }
-    ]
+    ],
+    createdAt: {
+        type: Date,
+        default: Date.now()
+    }
 })
 
 const OrganisationModel = mongoose.model("Organisation", organisationSchema)

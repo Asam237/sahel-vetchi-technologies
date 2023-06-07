@@ -24,6 +24,14 @@ const productSchema: mongoose.Schema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Organisation"
     },
+    sale: {
+        type: Boolean,
+        default: false
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now()
+    }
 })
 
 const ProductModel = mongoose.model("Product", productSchema)

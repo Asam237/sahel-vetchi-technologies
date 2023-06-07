@@ -4,10 +4,10 @@ import productService from "../domain/services/product.service";
 import { CreateProductInput } from "../shared/types/models";
 
 const createProductController = async (req: Request, res: Response) => {
-    const { description, prixAchat, prixGros, prixVente, title }: CreateProductInput = req.body
+    const { description, prixAchat, prixGros, prixVente, title, sale }: CreateProductInput = req.body
     const organisation = await OrganisationModel.findById({ _id: req.body.organisation })
     const createProduct = await productService.createProductService({
-        description, organisation, prixAchat, prixGros, prixVente, title
+        description, organisation, prixAchat, prixGros, prixVente, title, sale
     })
     organisation.products.push(createProduct._id)
     await organisation.save()

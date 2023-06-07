@@ -34,7 +34,11 @@ const userSchema: mongoose.Schema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Organisation"
     }
-  ]
+  ],
+  createdAt: {
+    type: Date,
+    default: Date.now()
+  }
 });
 
 const UserModel = mongoose.model("User", userSchema);

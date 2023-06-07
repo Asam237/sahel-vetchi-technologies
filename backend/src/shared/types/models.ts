@@ -30,5 +30,6 @@ export type CreateProductInput = {
   prixAchat: string
   prixGros: string
   prixVente: string
+  sale: boolean
   organisation: any
 }
