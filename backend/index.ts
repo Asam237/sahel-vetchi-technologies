@@ -16,4 +16,4 @@ const startServer = () => {
 
 void (() => {
   startServer()
-})
+})()
