@@ -21,4 +21,14 @@ export type CreateOrganisationInput = {
   code: string
   isRoot: boolean
   user: any
+  products?: any[]
+}
+
+export type CreateProductInput = {
+  title: string
+  description: string
+  prixAchat: string
+  prixGros: string
+  prixVente: string
+  organisation: any
 }
