@@ -1,0 +1,28 @@
+import { FooterLinkConditionType, FooterLinkType } from "../types";
+import { GithubImg, TwitterImg } from "./icons";
+
+export const footerlink: FooterLinkType[] = [
+    {
+        icon: GithubImg,
+        path: "https://github.com/Asam237/sahel-vetchi-technologies"
+    },
+    {
+        icon: TwitterImg,
+        path: "/"
+    },
+]
+
+export const footerlinkCondition: FooterLinkConditionType[] = [
+    {
+        name: "Features",
+        path: "#features"
+    },
+    {
+        name: "Teams",
+        path: "#teams"
+    },
+    {
+        name: "FAQs",
+        path: "#faq"
+    },
+]

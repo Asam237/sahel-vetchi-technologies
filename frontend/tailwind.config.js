@@ -12,5 +12,34 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    function ({ addComponents }) {
+      // Create our own container component
+      // and ask tailwind to take it into account.
+      addComponents({
+        ".container": {
+          maxWidth: "90vw",
+          marginLeft: "auto",
+          marginRight: "auto",
+          "@screen sm": {
+            maxWidth: "85vw",
+          },
+          "@screen xl": {
+            maxWidth: "1400px",
+          },
+        },
+        ".container-other": {
+          maxWidth: "90vw",
+          marginLeft: "auto",
+          marginRight: "auto",
+          "@screen sm": {
+            maxWidth: "85vw",
+          },
+          "@screen xl": {
+            maxWidth: "1280px",
+          },
+        },
+      });
+    },
+  ],
 };
