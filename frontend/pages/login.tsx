@@ -6,9 +6,8 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from "next/router"
 import { useCookies } from 'react-cookie'
-// import { useMutation, useQueryClient } from '@tanstack/react-query'
-// import { authLogin } from './api'
-// import { useCookies } from "react-cookie"
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { authLogin } from './api'
 
 const poppins = Poppins({ weight: "400", subsets: ['latin'] })
 
@@ -22,34 +21,34 @@ export default function Login() {
     const [progress, setProgress] = useState(false)
     const [password, setPassword] = useState("")
     const data = { username, password }
-    // const queryClient = useQueryClient()
-    // const authMutation = useMutation({
-    //     mutationFn: authLogin,
-    //     mutationKey: ["auth"],
-    //     onError: () => {
-    //         setProgress(false)
-    //         setLoading(true)
-    //         router.push("/login")
-    //     },
-    //     onSuccess: async () => {
-    //         await queryClient.invalidateQueries({
-    //             queryKey: ["auth"]
-    //         })
-    //         setProgress(false)
-    //         await myauth(data)
-    //         router.push("/explore")
-    //     }
-    // })
+    const queryClient = useQueryClient()
+    const authMutation = useMutation({
+        mutationFn: authLogin,
+        mutationKey: ["auth"],
+        onError: () => {
+            setProgress(false)
+            setLoading(true)
+            router.push("/login")
+        },
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({
+                queryKey: ["auth"]
+            })
+            setProgress(false)
+            await myauth(data)
+            router.push("/explore")
+        }
+    })
     const handlerAuth = async (e: any) => {
         e.preventDefault()
         setProgress(true)
-        // await authMutation.mutate(data)
+        await authMutation.mutate(data)
 
     }
     const myauth = async (data: any) => {
-        // const auth = await authLogin(data)
-        // const user: any = auth?.data
-        // setCookies("qwer", user, { secure: true })
+        const auth = await authLogin(data)
+        const user: any = auth?.data
+        setCookies("qwer", user, { secure: true })
     }
 
     return (
