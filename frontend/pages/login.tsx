@@ -70,8 +70,8 @@ export default function Login() {
                             <form onSubmit={handlerAuth}>
                                 <div className='max-w-sm bg-gray-50 px-8 py-6 border'>
                                     <div>
-                                        <p className='text-base py-1'>Username</p>
-                                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" className='px-2 rounded-md py-2 bg-white border lg:w-[22rem]' />
+                                        <p className='text-base py-1'>Email</p>
+                                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" className='px-2 rounded-md py-2 bg-white border md:w-[22rem]' />
                                     </div>
                                     <div className='mt-4'>
                                         <div className='flex justify-between items-center py-1'>

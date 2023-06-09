@@ -40,7 +40,7 @@ export const Header = () => {
                                     {
                                         headersLog.map((item, index) => {
                                             return (
-                                                <Link className="my-2 text-base mx-2 font-semibold hover:underline hover:underline-offset-4 hover:font-bold text-blue-700" href={item.path} key={index}>{item.name}</Link>
+                                                <Link className="my-2 text-base mx-2 font-semibold hover:underline hover:underline-offset-4 hover:font-bold text-gray-600" href={item.path} key={index}>{item.name}</Link>
                                             )
                                         })
                                     }

@@ -5,38 +5,39 @@ import Link from 'next/link'
 import { Footer } from '../components/commons/footer.common'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-// import { useMutation } from "@tanstack/react-query"
-// import { createUser } from './api'
+import { useMutation } from "@tanstack/react-query"
+import { authRegister } from './api'
 
 const poppins = Poppins({ weight: "400", subsets: ['latin'] })
 
 export default function Create() {
     const [fullname, setFullname] = useState("")
     const [email, setEmail] = useState("")
-    const [username, setUsername] = useState("")
+    const [phone, setPhone] = useState("")
+    const [adress, setAdress] = useState("")
     const [password, setPassword] = useState("")
-    const newUser: any = { fullname, email, password, username }
+    const newUser: any = { fullname, email, password, phone, adress }
     const [loading, setLoading] = useState(false)
     const router = useRouter()
 
-    // const mutationKey = ["register"]
-    // const createUserMutation = useMutation({
-    //     mutationKey,
-    //     mutationFn: createUser,
-    //     onSuccess: () => {
-    //         setLoading(false)
-    //         router.push("/login")
-    //     },
-    //     onError: () => {
-    //         setLoading(false)
-    //         router.push("/create")
-    //     }
-    // })
+    const mutationKey = ["register"]
+    const createUserMutation = useMutation({
+        mutationKey,
+        mutationFn: authRegister,
+        onSuccess: () => {
+            setLoading(false)
+            router.push("/login")
+        },
+        onError: () => {
+            setLoading(false)
+            router.push("/create")
+        }
+    })
 
     const handlerAddUser = (e: any) => {
         e.preventDefault()
         setLoading(true)
-        // createUserMutation.mutate(newUser)
+        createUserMutation.mutate(newUser)
     }
 
     return (
@@ -66,8 +67,12 @@ export default function Create() {
                                         <input type="text" onChange={(e) => setFullname(e.target.value)} className='px-2 rounded-md py-2 bg-white border md:w-[22rem]' />
                                     </div>
                                     <div className='mt-4'>
-                                        <p className='text-base py-1'>Username</p>
-                                        <input type="text" onChange={(e) => setUsername(e.target.value)} className='px-2 rounded-md py-2 bg-white border md:w-[22rem]' />
+                                        <p className='text-base py-1'>Phone</p>
+                                        <input type="text" onChange={(e) => setPhone(e.target.value)} className='px-2 rounded-md py-2 bg-white border md:w-[22rem]' />
+                                    </div>
+                                    <div className='mt-4'>
+                                        <p className='text-base py-1'>Adress</p>
+                                        <input type="text" onChange={(e) => setAdress(e.target.value)} className='px-2 rounded-md py-2 bg-white border md:w-[22rem]' />
                                     </div>
                                     <div className='mt-4'>
                                         <div className='flex justify-between items-center py-1'>
