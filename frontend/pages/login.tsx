@@ -16,11 +16,11 @@ export default function Login() {
 
     const router = useRouter()
     const [cookies, setCookies] = useCookies(["qwer"])
-    const [username, setUsername] = useState("")
+    const [email, setEmail] = useState("")
     const [loading, setLoading] = useState(false)
     const [progress, setProgress] = useState(false)
     const [password, setPassword] = useState("")
-    const data = { username, password }
+    const data = { email, password }
     const queryClient = useQueryClient()
     const authMutation = useMutation({
         mutationFn: authLogin,
@@ -36,7 +36,7 @@ export default function Login() {
             })
             setProgress(false)
             await myauth(data)
-            router.push("/explore")
+            router.push("/dashboard")
         }
     })
     const handlerAuth = async (e: any) => {
@@ -71,7 +71,7 @@ export default function Login() {
                                 <div className='max-w-sm bg-gray-50 px-8 py-6 border'>
                                     <div>
                                         <p className='text-base py-1'>Username</p>
-                                        <input value={username} onChange={(e) => setUsername(e.target.value)} type="text" className='px-2 rounded-md py-2 bg-white border lg:w-[22rem]' />
+                                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" className='px-2 rounded-md py-2 bg-white border lg:w-[22rem]' />
                                     </div>
                                     <div className='mt-4'>
                                         <div className='flex justify-between items-center py-1'>

@@ -17,11 +17,11 @@ export const headers: HeaderItemType[] = [
 
 export const headersLog = [
     {
-        name: "Explore",
-        path: "/explore"
+        name: "Utilisateurs",
+        path: "#users"
     },
     {
-        name: "My Links",
-        path: "/dashboard"
+        name: "Statistiques",
+        path: "#stats"
     },
 ]

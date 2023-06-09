@@ -100,11 +100,6 @@ export const Header = () => {
                                         </DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu>
-                                <div className="flex justify-center items-center border px-4 py-2 rounded-md border-black hover:bg-black hover:text-white ml-4">
-                                    <Link href={'/administration'} className="font-semibold text-base">
-                                        Administration
-                                    </Link>
-                                </div>
                             </div>
                         :
                         <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 mt-4 lg:mt-0">

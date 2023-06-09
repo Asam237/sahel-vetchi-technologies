@@ -33,7 +33,7 @@ export type HeaderItemType = {
 }
 
 export type AuthLoginType = {
-    username: string
+    email: string
     password: string
 }
 

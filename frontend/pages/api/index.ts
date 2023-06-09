@@ -1,7 +1,7 @@
 import axios from "axios"
 import { AuthCreateType, AuthLoginType } from "../../types"
 
-const baseURL: string = "http://localhost:3010"
+const baseURL: string = "http://127.0.0.1:3010"
 
 const api = axios.create({
     baseURL
