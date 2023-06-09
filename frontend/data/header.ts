@@ -21,7 +21,11 @@ export const headersLog = [
         path: "#users"
     },
     {
-        name: "Statistiques",
-        path: "#stats"
+        name: "Produits",
+        path: "#products"
+    },
+    {
+        name: "Ventes",
+        path: "#sales"
     },
 ]

@@ -16,7 +16,7 @@ export const Header = () => {
 
     const [cookie, removeCookie]: any = useCookies(["qwer"])
     const router = useRouter()
-    const name = cookie?.qwer?.fullname
+    const name = cookie?.qwer?.user?.fullname
     const token = cookie?.qwer?.token
     const userType = cookie?.qwer?.userType
 
