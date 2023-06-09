@@ -15,12 +15,13 @@ export default function Login() {
 
 
     const router = useRouter()
-    const [cookies, setCookies] = useCookies(["qwer"])
+    const [cookies, setCookies] = useCookies(["qwer", "userId"])
     const [email, setEmail] = useState("")
     const [loading, setLoading] = useState(false)
     const [progress, setProgress] = useState(false)
     const [password, setPassword] = useState("")
     const data = { email, password }
+    let auth: any;
     const queryClient = useQueryClient()
     const authMutation = useMutation({
         mutationFn: authLogin,
@@ -36,7 +37,20 @@ export default function Login() {
             })
             setProgress(false)
             await myauth(data)
-            router.push("/dashboard")
+            const userType = auth.data.user.userType
+            const userId = auth.data.user._id
+            const organisation = auth.data.user.organisations
+            setCookies("userId", userId, { secure: true })
+            if (userType === "METIER_ORG") {
+                router.push("/dashboard")
+            }
+            if (userType === "ADMIN_ORG") {
+                if (organisation.length === 0) {
+                    router.push("/organisation")
+                } else {
+                    router.push("/dashboard")
+                }
+            }
         }
     })
     const handlerAuth = async (e: any) => {
@@ -46,7 +60,7 @@ export default function Login() {
 
     }
     const myauth = async (data: any) => {
-        const auth = await authLogin(data)
+        auth = await authLogin(data)
         const user: any = auth?.data
         setCookies("qwer", user, { secure: true })
     }

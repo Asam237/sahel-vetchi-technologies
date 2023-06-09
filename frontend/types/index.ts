@@ -39,10 +39,19 @@ export type AuthLoginType = {
 
 export type AuthCreateType = {
     fullname: string
-    username: string
     email: string
     password: string
-    userType: string
+    phone: string
+    adress: string
+}
+
+export type OrganisationCreateType = {
+    fullname: string
+    email: string
+    phone: string
+    adress: string
+    code: string
+    user: string
 }
 
 export type ItemType = {

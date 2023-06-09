@@ -1,5 +1,5 @@
 import axios from "axios"
-import { AuthCreateType, AuthLoginType } from "../../types"
+import { AuthCreateType, AuthLoginType, OrganisationCreateType } from "../../types"
 
 const baseURL: string = "http://127.0.0.1:3010"
 
@@ -13,4 +13,8 @@ export const authLogin = async (input: AuthLoginType) => {
 
 export const authRegister = async (input: AuthCreateType) => {
     return await api.post("/auth/register", input)
+}
+
+export const createOrganisation = async (input: OrganisationCreateType) => {
+    return await api.post("/organisations/create", input)
 }
