@@ -7,10 +7,11 @@ import { ItemProductType, ItemType } from "../../types";
 // import { Modal } from "./modal.common";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Modal } from "./modal.common";
-import { saleProduct } from "../../pages/api";
+import { destroyProduct, saleProduct } from "../../pages/api";
 
 export const ItemsProduct = ({ _id, nameItem, descriptionItem, prixAchatItem, prixGrosItem, createdAt, organisation, prixVenteItem }: ItemProductType) => {
 
+    const [deleteModal, setDeleteModal] = useState(false)
     const [saleModal, setSaleModal] = useState(false)
     const [name, setName] = useState(nameItem)
     const [description, setDescription] = useState(descriptionItem)
@@ -24,8 +25,22 @@ export const ItemsProduct = ({ _id, nameItem, descriptionItem, prixAchatItem, pr
         setSaleModal(true)
     }
 
+    const handleDelete = async (e: any) => {
+        setDeleteModal(true)
+    }
+
+    const deleteProductMutation = useMutation({
+        mutationFn: destroyProduct,
+        onSuccess: () => {
+            clientQuery.invalidateQueries({ queryKey: ['products'] })
+        }
+    })
+
+    const handleDestroyProduct = async () => {
+        deleteProductMutation.mutate(_id)
+        setDeleteModal(false)
+    }
     const sales = async (e: any) => {
-        console.log("Hello HERE !!!")
         e.preventDefault()
         await saleProduct(_id, { sale: true })
         setSaleModal(false)
@@ -55,7 +70,7 @@ export const ItemsProduct = ({ _id, nameItem, descriptionItem, prixAchatItem, pr
                             <div className="flex space-x-6">
                                 <AiFillEdit className="cursor-pointer" size={24} color="gray" />
                                 <FiShoppingCart className="cursor-pointer" onClick={handleSale} size={24} color="gray" />
-                                <AiFillDelete className="cursor-pointer" size={24} color="red" />
+                                <AiFillDelete className="cursor-pointer" size={24} onClick={handleDelete} color="red" />
                             </div>
                         </div>
                     </div>
@@ -79,6 +94,25 @@ export const ItemsProduct = ({ _id, nameItem, descriptionItem, prixAchatItem, pr
                                     Sell
                                 </button>
                             </div>
+                        </div>
+                    </Modal>
+                )
+            }
+            {
+                deleteModal && (
+                    <Modal
+                        onClose={() => setDeleteModal(false)}
+                        title="Delete Product">
+                        <div>
+                            <p className='text-sm py-1'>Delete Product</p>
+                        </div>
+                        <div className="flex flex-row space-x-4 items-center justify-end my-6">
+                            <button onClick={handleCancel} className="font-semibold text-sm flex justify-center items-center border px-4 py-2 rounded-md border-black w-28">
+                                Cancel
+                            </button>
+                            <button onClick={handleDestroyProduct} className="bg-red-500 px-4 py-2 w-28 rounded-lg text-white flex justify-center items-center">
+                                Delete
+                            </button>
                         </div>
                     </Modal>
                 )

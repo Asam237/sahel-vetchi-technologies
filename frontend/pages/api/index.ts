@@ -31,3 +31,7 @@ export const saleProduct = async (id: any, data: any) => {
 export const createProduct = async (data: any) => {
     return await api.post("/products/create", data)
 }
+
+export const destroyProduct = async (id: any) => {
+    return await api.delete(`/products/${id}`)
+}
