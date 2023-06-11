@@ -7,7 +7,7 @@ const createOrganisationController = async (req: Request, res: Response) => {
     const { adress, code, email, fullname, isRoot, phone }: CreateOrganisationInput = req.body
     const user = await UserModel.findById({ _id: req.body.user })
     const createOrganisation = await organisationService.createOrganisationService({
-        adress, code, email, fullname, isRoot, phone, user
+        adress, code, email, fullname, isRoot, phone,
     })
     user?.organisations.push(createOrganisation._id)
     await user?.save()

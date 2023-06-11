@@ -27,3 +27,7 @@ export const getAllProduct = async (token: any) => {
 export const saleProduct = async (id: any, data: any) => {
     return await api.put(`/products/${id}`, data)
 }
+
+export const createProduct = async (data: any) => {
+    return await api.post("/products/create", data)
+}

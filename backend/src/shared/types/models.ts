@@ -20,8 +20,6 @@ export type CreateOrganisationInput = {
   adress: string
   code: string
   isRoot: boolean
-  user: any
-  products?: any[]
 }
 
 export type CreateProductInput = {
@@ -31,5 +29,5 @@ export type CreateProductInput = {
   prixGros: string
   prixVente: string
   sale: boolean
-  organisation: any
+  user: any
 }

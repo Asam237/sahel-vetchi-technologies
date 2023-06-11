@@ -1,18 +1,19 @@
 import { Request, Response } from "express";
 import { OrganisationModel } from "../domain/models/organisation.model";
 import { productUpdateParams } from "../domain/models/product.model";
+import { UserModel } from "../domain/models/user.model";
 import productService from "../domain/services/product.service";
 import { CreateProductInput } from "../shared/types/models";
 import { parseRequest } from "../utils/helpers";
 
 const createProductController = async (req: Request, res: Response) => {
     const { description, prixAchat, prixGros, prixVente, title, sale }: CreateProductInput = req.body
-    const organisation = await OrganisationModel.findById({ _id: req.body.organisation })
+    const user = await UserModel.findById({ _id: req.body.user })
     const createProduct = await productService.createProductService({
-        description, organisation, prixAchat, prixGros, prixVente, title, sale
+        description, user, prixAchat, prixGros, prixVente, title, sale
     })
-    organisation.products.push(createProduct._id)
-    await organisation.save()
+    user?.products.push(createProduct._id)
+    await user.save()
     await createProduct.save()
     return res.status(200).json({ data: createProduct })
 }
@@ -33,7 +34,7 @@ const getAllProductController = async (req: Request, res: Response) => {
 }
 
 const getProductByTokenController = async (req: Request, res: Response) => {
-    const products = await productService.getProductByToken(req.user.id, "organisation")
+    const products = await productService.getProductByToken(req.user.id, "user")
     return res.status(200).json({ data: products })
 }
 

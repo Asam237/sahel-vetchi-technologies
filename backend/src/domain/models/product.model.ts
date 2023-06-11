@@ -20,9 +20,9 @@ const productSchema: mongoose.Schema = new mongoose.Schema({
         type: String,
         required: true
     },
-    organisation: {
+    user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Organisation"
+        ref: "User"
     },
     sale: {
         type: Boolean,

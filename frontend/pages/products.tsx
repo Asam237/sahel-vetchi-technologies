@@ -1,5 +1,5 @@
 import { Poppins } from "@next/font/google";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Head from "next/head";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
@@ -7,7 +7,7 @@ import { Footer } from "../components/commons/footer.common";
 import { Header } from "../components/commons/header.common";
 import { ItemsProduct } from "../components/commons/itemsProduct.common";
 import { Modal } from "../components/commons/modal.common";
-import { getAllProduct } from "./api";
+import { createProduct, getAllProduct } from "./api";
 
 const poppins = Poppins({ weight: "400", subsets: ['latin'] })
 
@@ -16,12 +16,23 @@ export default function Product() {
     const [addProductModal, setAddProductModal] = useState(false)
     const [cookie, removeCookie]: any = useCookies(["qwer"])
     const token = cookie?.qwer?.token
-    const organisation = cookie?.qwer?.user
-    const [name, setName] = useState("")
+    const user = cookie?.qwer?.user?._id
+    const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [prixAchat, setPrixAchat] = useState("")
     const [prixGros, setPrixGros] = useState("")
     const [prixVente, setPrixVente] = useState("")
+
+    const queryClient = useQueryClient()
+    const addProduct: any = { title, description, prixAchat, prixGros, prixVente, user: `${user}` }
+
+
+    const createProductMutation = useMutation({
+        mutationFn: createProduct,
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ["products"] })
+        }
+    })
 
     const { isLoading, error, data } = useQuery({
         queryKey: ["products"],
@@ -29,6 +40,15 @@ export default function Product() {
     })
 
     const products = data?.data || []
+
+
+    const handleProduct = async (e: any) => {
+        e.preventDefault()
+        createProductMutation.mutate(addProduct)
+        setAddProductModal(false)
+    }
+
+    console.log("ID ===>", user)
 
     const handleAddProduct = () => {
         setAddProductModal(true)
@@ -73,10 +93,10 @@ export default function Product() {
                         onClose={() => setAddProductModal(false)}
                         title="Add New Product"
                     >
-                        <form>
+                        <form onSubmit={handleProduct}>
                             <div>
                                 <p className='text-sm py-1'>Title</p>
-                                <input type="text" className='px-6 rounded-md py-1 bg-white border w-full' onChange={(e) => setName(e.target.value)} />
+                                <input type="text" className='px-6 rounded-md py-1 bg-white border w-full' onChange={(e) => setTitle(e.target.value)} />
                             </div>
                             <div>
                                 <p className='text-sm py-1'>Purchase Price</p>

@@ -29,10 +29,10 @@ const userSchema: mongoose.Schema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  organisations: [
+  products: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Organisation"
+      ref: "Product"
     }
   ],
   createdAt: {
