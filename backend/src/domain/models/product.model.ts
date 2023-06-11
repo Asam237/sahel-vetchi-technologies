@@ -35,5 +35,6 @@ const productSchema: mongoose.Schema = new mongoose.Schema({
 })
 
 const ProductModel = mongoose.model("Product", productSchema)
+const productUpdateParams: string[] = ["title", "description", "prixAchat", "prixGros", "prixVente", "sale"]
 
-export { ProductModel }
+export { ProductModel, productUpdateParams }

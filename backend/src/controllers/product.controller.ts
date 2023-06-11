@@ -1,7 +1,9 @@
 import { Request, Response } from "express";
 import { OrganisationModel } from "../domain/models/organisation.model";
+import { productUpdateParams } from "../domain/models/product.model";
 import productService from "../domain/services/product.service";
 import { CreateProductInput } from "../shared/types/models";
+import { parseRequest } from "../utils/helpers";
 
 const createProductController = async (req: Request, res: Response) => {
     const { description, prixAchat, prixGros, prixVente, title, sale }: CreateProductInput = req.body
@@ -35,4 +37,11 @@ const getProductByTokenController = async (req: Request, res: Response) => {
     return res.status(200).json({ data: products })
 }
 
-export { createProductController, deleteProductController, getOneProductController, getAllProductController, getProductByTokenController }
+const updateProductController = async (req: Request, res: Response) => {
+    const id = req.params.id;
+    const data = parseRequest(req.body, productUpdateParams);
+    const updateProduct = await productService.updateProduct(id, data);
+    return res.json(updateProduct);
+};
+
+export { createProductController, deleteProductController, getOneProductController, getAllProductController, getProductByTokenController, updateProductController }

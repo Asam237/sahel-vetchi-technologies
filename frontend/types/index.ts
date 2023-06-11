@@ -54,6 +54,17 @@ export type OrganisationCreateType = {
     user: string
 }
 
+export type ItemProductType = {
+    _id?: any
+    nameItem: String
+    descriptionItem: String
+    prixAchatItem?: String
+    prixGrosItem?: String
+    prixVenteItem?: Boolean
+    createdAt?: any
+    organisation?: any
+}
+
 export type ItemType = {
     _id?: any
     nameItem: String

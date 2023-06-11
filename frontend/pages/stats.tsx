@@ -20,10 +20,9 @@ export default function Stats() {
                 <Header />
                 <div className='py-16 container'>
                     <div className='grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid gap-x-4 gap-y-10'>
-                        <Items _id={""} descriptionItem={"description"} nameItem={"name jsnf jsfns ksj fjs  osjfb"} path={"path"} urlItem={"url"} createdAt={"create"} />
-                        <Items _id={""} descriptionItem={"description"} nameItem={"name jsnf jsfns ksj fjs  osjfb"} path={"path"} urlItem={"url"} createdAt={"create"} />
-                        <Items _id={""} descriptionItem={"description"} nameItem={"name jsnf jsfns ksj fjs  osjfb"} path={"path"} urlItem={"url"} createdAt={"create"} />
-                        <Items _id={""} descriptionItem={"description"} nameItem={"name jsnf jsfns ksj fjs  osjfb"} path={"path"} urlItem={"url"} createdAt={"create"} />
+                        <Items _id={""} descriptionItem={"description"} nameItem={"Prado 2015"} prixAchatItem={"25 000 000 FCFA"} createdAt={"create"} />
+                        <Items _id={""} descriptionItem={"description"} nameItem={"Prado 2015"} prixAchatItem={"25 000 000 FCFA"} createdAt={"create"} />
+                        <Items _id={""} descriptionItem={"description"} nameItem={"Prado 2015"} prixAchatItem={"25 000 000 FCFA"} createdAt={"create"} />
                     </div>
                 </div>
             </main>

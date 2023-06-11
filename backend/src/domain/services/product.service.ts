@@ -19,4 +19,11 @@ const getProductByToken = async (id: any, populate: string) => {
     return await ProductModel.find({ user: id }).populate(populate)
 }
 
-export default { createProductService, deleteProductService, getOneProductService, getAllProductService, getProductByToken }
+const updateProduct = async (id: any, data: any) => {
+    if (data !== null) {
+        await ProductModel.findOneAndUpdate({ _id: id }, data);
+    }
+    return await ProductModel.findOne({ _id: id });
+};
+
+export default { createProductService, deleteProductService, getOneProductService, getAllProductService, getProductByToken, updateProduct }

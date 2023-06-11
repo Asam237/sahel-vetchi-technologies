@@ -17,15 +17,15 @@ export const headers: HeaderItemType[] = [
 
 export const headersLog = [
     {
-        name: "Utilisateurs",
-        path: "#users"
-    },
-    {
         name: "Produits",
-        path: "#products"
+        path: "/products"
     },
     {
         name: "Ventes",
-        path: "#sales"
+        path: "/sales"
+    },
+    {
+        name: "Statistiques",
+        path: "/stats"
     },
 ]

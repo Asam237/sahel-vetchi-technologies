@@ -18,3 +18,12 @@ export const authRegister = async (input: AuthCreateType) => {
 export const createOrganisation = async (input: OrganisationCreateType) => {
     return await api.post("/organisations/create", input)
 }
+
+export const getAllProduct = async (token: any) => {
+    api.defaults.headers.common = { 'Authorization': 'Bearer ' + token }
+    return await api.get("/products").then((res) => res.data)
+}
+
+export const saleProduct = async (id: any, data: any) => {
+    return await api.put(`/products/${id}`, data)
+}

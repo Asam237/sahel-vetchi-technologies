@@ -6,7 +6,7 @@ export const ItemsDescComponent = ({ description, items, picture, title, myswitc
     if (myswitch === true) {
         return (
             <div className="flex flex-col-reverse md:flex-row mb-10 md:mb-36">
-                <div className="w-full md:w-1/2">
+                <div className="w-full md:w-3/5 md:mr-24">
                     <div>
                         <h3 className="text-2xl md:text-4xl md:max-w-3xl text-blue-700 font-bold leading-tight text-center md:text-justify mt-6">
                             {title}
@@ -23,7 +23,7 @@ export const ItemsDescComponent = ({ description, items, picture, title, myswitc
                         </ul>
                     </div>
                 </div>
-                <div className="w-full md:w-1/2 flex justify-center items-center">
+                <div className="w-full md:w-2/5 flex justify-center items-center md:justify-start">
                     <Image src={picture} alt="pic" className="w-32 md:w-60 h-auto" />
                 </div>
             </div>
@@ -33,10 +33,10 @@ export const ItemsDescComponent = ({ description, items, picture, title, myswitc
     else {
         return (
             <div className="flex flex-col md:flex-row mb-10 md:mb-36">
-                <div className="w-full md:w-1/2 flex justify-center items-center">
-                    <Image src={picture} alt="pic" className="w-32 md:w-60 h-auto" />
+                <div className="w-full md:w-2/5 flex justify-center items-center md:justify-end">
+                    <Image src={picture} alt="pic" className="w-32 md:w-60 h-auto md:mr-24" />
                 </div>
-                <div className="w-full md:w-1/2">
+                <div className="w-full md:w-3/5">
                     <div>
                         <h3 className="text-2xl md:text-4xl md:max-w-3xl text-blue-700 font-bold leading-tight text-center md:text-justify mt-6">
                             {title}
