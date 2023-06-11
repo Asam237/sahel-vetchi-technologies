@@ -63,6 +63,7 @@ export type ItemProductType = {
     prixVenteItem?: Boolean
     createdAt?: any
     organisation?: any
+    saleLab?: Boolean
 }
 
 export type ItemType = {

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
-import { AiFillEdit, AiFillDelete } from "react-icons/ai"
-import { FiShoppingBag, FiShoppingCart } from "react-icons/fi"
+import { AiFillEdit, AiFillDelete, AiFillPushpin } from "react-icons/ai"
+import { FiShoppingCart } from "react-icons/fi"
 import { AiFillShopping } from "react-icons/ai"
 import { ItemProductType, ItemType } from "../../types";
 // import { Modal } from "./modal.common";
@@ -9,7 +9,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Modal } from "./modal.common";
 import { destroyProduct, saleProduct } from "../../pages/api";
 
-export const ItemsProduct = ({ _id, nameItem, descriptionItem, prixAchatItem, prixGrosItem, createdAt, organisation, prixVenteItem }: ItemProductType) => {
+export const ItemsProduct = ({ _id, nameItem, descriptionItem, prixAchatItem, prixGrosItem, createdAt, organisation, prixVenteItem, saleLab }: ItemProductType) => {
 
     const [deleteModal, setDeleteModal] = useState(false)
     const [saleModal, setSaleModal] = useState(false)
@@ -59,7 +59,7 @@ export const ItemsProduct = ({ _id, nameItem, descriptionItem, prixAchatItem, pr
                         <AiFillShopping size={60} className="text-gray-600" />
                         <h4 className="text-xl mt-4 font-bold">{name}</h4>
                         <p className="text-sm mt-2 line-clamp-4">{description}</p>
-                        <p className="text-sm underline underline-offset-4 my-2 text-red-400 font-semibold">
+                        <p className={`text-sm underline-offset-4 my-2 text-red-400 font-semibold ${saleLab === true ? 'line-through' : 'underline'}`}>
                             {prixAchat} FCFA
                         </p>
                     </div>
@@ -67,10 +67,16 @@ export const ItemsProduct = ({ _id, nameItem, descriptionItem, prixAchatItem, pr
                         <hr className="my-3" />
                         <div className="flex justify-between items-center">
                             <p className="italic text-xs text-gray-500">{new Date(createdAt).toDateString()}</p>
-                            <div className="flex space-x-6">
+                            <div className={`space-x-6 ${saleLab === true ? 'hidden' : 'flex'}`}>
                                 <AiFillEdit className="cursor-pointer" size={24} color="gray" />
                                 <FiShoppingCart className="cursor-pointer" onClick={handleSale} size={24} color="gray" />
                                 <AiFillDelete className="cursor-pointer" size={24} onClick={handleDelete} color="red" />
+                            </div>
+                            <div className={`space-x-6 ${saleLab === true ? 'flex' : 'hidden'}`}>
+                                <div className="flex flex-row space-x-2 justify-center items-center">
+                                    <p className="text-sm text-green-600 font-semibold">Sold</p>
+                                    <AiFillPushpin size={20} className="text-green-600" />
+                                </div>
                             </div>
                         </div>
                     </div>

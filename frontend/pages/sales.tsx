@@ -35,7 +35,7 @@ export default function Sales() {
                         {
                             products.map((item: any, index: any) => {
                                 if (item.sale === true) {
-                                    return <ItemsProduct key={index} _id={item._id} descriptionItem={item.description} nameItem={item.title} prixAchatItem={item.prixAchat} createdAt={item.createdAt} />
+                                    return <ItemsProduct key={index} _id={item._id} descriptionItem={item.description} nameItem={item.title} prixAchatItem={item.prixAchat} createdAt={item.createdAt} saleLab={true} />
                                 }
                             })
                         }

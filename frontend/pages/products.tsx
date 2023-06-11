@@ -48,8 +48,6 @@ export default function Product() {
         setAddProductModal(false)
     }
 
-    console.log("ID ===>", user)
-
     const handleAddProduct = () => {
         setAddProductModal(true)
     }
