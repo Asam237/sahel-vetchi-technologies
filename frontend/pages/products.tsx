@@ -1,14 +1,12 @@
 import { Poppins } from "@next/font/google";
 import { useQuery } from "@tanstack/react-query";
 import Head from "next/head";
-import Link from "next/link";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 import { Footer } from "../components/commons/footer.common";
 import { Header } from "../components/commons/header.common";
 import { ItemsProduct } from "../components/commons/itemsProduct.common";
 import { Modal } from "../components/commons/modal.common";
-import { ItemProductType } from "../types";
 import { getAllProduct } from "./api";
 
 const poppins = Poppins({ weight: "400", subsets: ['latin'] })
@@ -31,8 +29,6 @@ export default function Product() {
     })
 
     const products = data?.data || []
-
-    console.log("Product===>", products)
 
     const handleAddProduct = () => {
         setAddProductModal(true)
